@@ -3,11 +3,11 @@ let ballY = 75
 let ballSpeedX = 5
 let ballSpeedY = 7
 
-const TRACK_WIDTH = 80
-const TRACK_HEIGHT = 20
+const TRACK_WIDTH = 40
+const TRACK_HEIGHT = 40
 const TRACK_GAP = 2
-const TRACK_COLS = 10
-const TRACK_ROWS = 14
+const TRACK_COLS = 20
+const TRACK_ROWS = 15
 
 let trackGrid = new Array(TRACK_COLS * TRACK_ROWS)
 let tracksLeft = 0
@@ -147,7 +147,7 @@ function drawTracks() {
           TRACK_HEIGHT * eachRow,
           TRACK_WIDTH - TRACK_GAP,
           TRACK_HEIGHT - TRACK_GAP,
-          '#ff4500'
+          '#ff0000'
         )
       }
     }
