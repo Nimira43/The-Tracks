@@ -3,14 +3,14 @@ let ballY = 75
 let ballSpeedX = 5
 let ballSpeedY = 7
 
-const BRICK_WIDTH = 80
-const BRICK_HEIGHT = 20
-const BRICK_GAP = 2
-const BRICK_COLS = 10
-const BRICK_ROWS = 14
+const TRACK_WIDTH = 80
+const TRACK_HEIGHT = 20
+const TRACK_GAP = 2
+const TRACK_COLS = 10
+const TRACK_ROWS = 14
 
-let brickGrid = new Array(BRICK_COLS * BRICK_ROWS)
-let bricksLeft = 0
+let trackGrid = new Array(TRACK_COLS * TRACK_ROWS)
+let tracksLeft = 0
 let canvas, ctx
 let mouseX = 0
 let mouseY = 0
@@ -22,17 +22,17 @@ function updateMousePos(event) {
   mouseY = event.clientY - rect.top - root.scrollTop
 }
 
-function brickReset() {
-  bricksLeft = 0
+function trackReset() {
+  tracksLeft = 0
 
-  for (let row = 0; row < BRICK_ROWS; row++) {
-    for (let col = 0; col < BRICK_COLS; col++) {
-      let brickIndex = row * BRICK_COLS + col
+  for (let row = 0; row < TRACK_ROWS; row++) {
+    for (let col = 0; col < TRACK_COLS; col++) {
+      let trackIndex = row * TRACK_COLS + col
       if (row < 3) {
-        brickGrid[brickIndex] = false
+        trackGrid[trackIndex] = false
       } else {
-        brickGrid[brickIndex] = true
-        bricksLeft++
+        trackGrid[trackIndex] = true
+        tracksLeft++
       }
     }
   }
@@ -45,7 +45,7 @@ window.onload = function () {
   setInterval(updateAll, 1000 / fps)
 
   canvas.addEventListener('mousemove', updateMousePos)    
-  brickReset() 
+  trackReset() 
   ballReset()
 }
 
@@ -68,54 +68,54 @@ function ballMove() {
   if (ballY < 0 && ballSpeedY < 0.0) ballSpeedY *= -1
   if (ballY > canvas.height) {
     ballReset()
-    brickReset()
+    trackReset()
   }
 }
 
-function isBrickAtColRow(col, row) {
+function isTrackAtColRow(col, row) {
   if (
     col >= 0 &&
-    col < BRICK_COLS &&
+    col < TRACK_COLS &&
     row >= 0 &&
-    row < BRICK_ROWS
+    row < TRACK_ROWS
   ) {
-    let brickIndexUnderCoord = rowColToArrayIndex(col, row)
-    return brickGrid[brickIndexUnderCoord]
+    let trackIndexUnderCoord = rowColToArrayIndex(col, row)
+    return trackGrid[trackIndexUnderCoord]
   } else {
     return false
   }
 }
 
-function ballBrickHandling() {
-  let ballBrickCol = Math.floor(ballX / BRICK_WIDTH)
-  let ballBrickRow = Math.floor(ballY / BRICK_HEIGHT)
-  let brickIndexUnderBall = rowColToArrayIndex(ballBrickCol, ballBrickRow) 
+function ballTrackHandling() {
+  let ballTrackCol = Math.floor(ballX / TRACK_WIDTH)
+  let ballTrackRow = Math.floor(ballY / TRACK_HEIGHT)
+  let trackIndexUnderBall = rowColToArrayIndex(ballTrackCol, ballTrackRow) 
   
   if (
-    ballBrickCol >= 0 &&
-    ballBrickCol < BRICK_COLS &&
-    ballBrickRow >= 0 &&
-    ballBrickRow < BRICK_ROWS
+    ballTrackCol >= 0 &&
+    ballTrackCol < TRACK_COLS &&
+    ballTrackRow >= 0 &&
+    ballTrackRow < TRACK_ROWS
   ) {
-    if (isBrickAtColRow(ballBrickCol, ballBrickRow)) {
-      brickGrid[brickIndexUnderBall] = false
-      bricksLeft--
+    if (isTrackAtColRow(ballTrackCol, ballTrackRow)) {
+      trackGrid[trackIndexUnderBall] = false
+      tracksLeft--
     
       let prevBallX = ballX - ballSpeedX
       let prevBallY = ballY - ballSpeedY
-      let prevBrickCol = Math.floor(prevBallX / BRICK_WIDTH)
-      let prevBrickRow = Math.floor(prevBallY / BRICK_HEIGHT)
+      let prevTrackCol = Math.floor(prevBallX / TRACK_WIDTH)
+      let prevTrackRow = Math.floor(prevBallY / TRACK_HEIGHT)
 
       let bothTestsFailed = true
 
-      if (prevBrickCol != ballBrickCol) {
-        if (isBrickAtColRow(prevBrickCol, ballBrickRow) == false) {
+      if (prevTrackCol != ballTrackCol) {
+        if (isTrackAtColRow(prevTrackCol, ballTrackRow) == false) {
           ballSpeedX *= -1
           bothTestsFailed = false
         }
       }
-      if (prevBrickRow != ballBrickRow) {
-        if (isBrickAtColRow(prevBrickCol, ballBrickRow) == false) {
+      if (prevTrackRow != ballTrackRow) {
+        if (isTrackAtColRow(prevTrackCol, ballTrackRow) == false) {
           ballSpeedY *= -1
           bothTestsFailed = false
         }
@@ -130,23 +130,23 @@ function ballBrickHandling() {
   
 function moveAll() {
   ballMove()
-  ballBrickHandling()
+  ballTrackHandling()
 }
   
 function rowColToArrayIndex(col, row) {
-  return col + BRICK_COLS * row
+  return col + TRACK_COLS * row
 }
 
-function drawBricks() {
-  for (let eachRow = 0; eachRow < BRICK_ROWS; eachRow++) {
-    for (let eachCol = 0; eachCol < BRICK_COLS; eachCol++) {
+function drawTracks() {
+  for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
+    for (let eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
       let arrayIndex = rowColToArrayIndex(eachCol, eachRow)
-      if (brickGrid[arrayIndex]) {
+      if (trackGrid[arrayIndex]) {
         colourRect(
-          BRICK_WIDTH * eachCol,
-          BRICK_HEIGHT * eachRow,
-          BRICK_WIDTH - BRICK_GAP,
-          BRICK_HEIGHT - BRICK_GAP,
+          TRACK_WIDTH * eachCol,
+          TRACK_HEIGHT * eachRow,
+          TRACK_WIDTH - TRACK_GAP,
+          TRACK_HEIGHT - TRACK_GAP,
           '#ff4500'
         )
       }
@@ -157,7 +157,7 @@ function drawBricks() {
 function drawAll() {
   colourRect(0, 0, canvas.width, canvas.height, '#000')
   colourCircle(ballX, ballY, 10, '#ffd700')
-  drawBricks()
+  drawTracks()
 }
 
 function colourRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColour) {
