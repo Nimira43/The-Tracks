@@ -5,8 +5,8 @@ body {
   align-items: center;
   justify-content: center;
   background: linear-gradient(
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.6)),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.8)),
     url('../images/background/bg.jpg') no-repeat center;
   background-size: cover;
   overflow: hidden;
