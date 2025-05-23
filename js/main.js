@@ -27,7 +27,6 @@ let trackGrid = [
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 ]
 
-let tracksLeft = 0
 let canvas, ctx
 let mouseX = 0
 let mouseY = 0
@@ -37,13 +36,6 @@ function updateMousePos(event) {
   let root = document.documentElement
   mouseX = event.clientX - rect.left - root.scrollLeft
   mouseY = event.clientY - rect.top - root.scrollTop
-}
-
-function trackReset() {
-  for (let i = 0; i < TRACK_COLS * TRACK_ROWS; i++) {
-    trackGrid[i] = true
-    tracksLeft++
-  }
 }
 
 window.onload = function () {
