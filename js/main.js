@@ -1,4 +1,5 @@
-import { trackGrid } from './tracks/tracks.js'
+import { piquet, senna } from './tracks/tracks.js'
+console.log(piquet, senna)
 
 let ballX = 75
 let ballY = 75
@@ -11,24 +12,6 @@ const TRACK_GAP = 2
 const TRACK_COLS = 20
 const TRACK_ROWS = 15
 
-// let trackGrid = [
-//   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-//   1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-//   1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-//   1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1,
-//   1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1,
-//   1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1,
-//   1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1,
-//   1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1,
-//   1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1,
-//   1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-//   1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-//   1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1,
-//   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-//   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-//   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-// ]
-console.log(trackGrid)
 let canvas, ctx
 let mouseX = 0
 let mouseY = 0
@@ -81,7 +64,8 @@ function isTrackAtColRow(col, row) {
     row < TRACK_ROWS
   ) {
     let trackIndexUnderCoord = rowColToArrayIndex(col, row)
-    return (trackGrid[trackIndexUnderCoord] == 1)
+    // return (piquet[trackIndexUnderCoord] == 1)
+    return (senna[trackIndexUnderCoord] == 1)
   } else {
     return false
   }
@@ -140,7 +124,8 @@ function drawTracks() {
   for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
     for (let eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
       let arrayIndex = rowColToArrayIndex(eachCol, eachRow)
-      if (trackGrid[arrayIndex] == 1) {
+      // if (piquet[arrayIndex] == 1) {
+      if (senna[arrayIndex] == 1) {
         colourRect(
           TRACK_WIDTH * eachCol,
           TRACK_HEIGHT * eachRow,
