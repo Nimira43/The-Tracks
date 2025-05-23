@@ -12,11 +12,11 @@ const BRICK_ROWS = 14
 let brickGrid = new Array(BRICK_COLS * BRICK_ROWS)
 let bricksLeft = 0
 
-const PADDLE_WIDTH = 100
-const PADDLE_THICKNESS = 10
-const PADDLE_DISTANCE_FROM_EDGE = 60
-const PADDLE_SPEED = 30 // key based movement.
-let paddleX = 400
+// const PADDLE_WIDTH = 100
+// const PADDLE_THICKNESS = 10
+// const PADDLE_DISTANCE_FROM_EDGE = 60
+// const PADDLE_SPEED = 30 
+// let paddleX = 400
 let canvas, ctx
 let mouseX = 0
 let mouseY = 0
@@ -26,21 +26,21 @@ function updateMousePos(event) {
   let root = document.documentElement
   mouseX = event.clientX - rect.left - root.scrollLeft
   mouseY = event.clientY - rect.top - root.scrollTop
-  paddleX = mouseX - PADDLE_WIDTH / 2
+  // paddleX = mouseX - PADDLE_WIDTH / 2
 }
 
-function updatePaddleMovement(event) {
-  if (event.key === 'ArrowLeft') {
-    paddleX -= PADDLE_SPEED
-  } else if (event.key === 'ArrowRight') {
-    paddleX += PADDLE_SPEED
-  }
-  if (paddleX < 0) {
-    paddleX = 0
-  } else if (paddleX > canvas.width - PADDLE_WIDTH) {
-    paddleX = canvas.width - PADDLE_WIDTH
-  }
-}
+// function updatePaddleMovement(event) {
+//   if (event.key === 'ArrowLeft') {
+//     paddleX -= PADDLE_SPEED
+//   } else if (event.key === 'ArrowRight') {
+//     paddleX += PADDLE_SPEED
+//   }
+//   if (paddleX < 0) {
+//     paddleX = 0
+//   } else if (paddleX > canvas.width - PADDLE_WIDTH) {
+//     paddleX = canvas.width - PADDLE_WIDTH
+//   }
+// }
 
 function brickReset() {
   bricksLeft = 0
@@ -65,7 +65,7 @@ window.onload = function () {
   setInterval(updateAll, 1000 / fps)
 
   canvas.addEventListener('mousemove', updateMousePos)    
-  document.addEventListener('keydown', updatePaddleMovement)
+  // document.addEventListener('keydown', updatePaddleMovement)
 
   brickReset() 
   ballReset()
@@ -177,7 +177,7 @@ function ballPaddleHandling() {
 function moveAll() {
   ballMove()
   ballBrickHandling()
-  ballPaddleHandling()
+  // ballPaddleHandling()
 }
   
 function rowColToArrayIndex(col, row) {
@@ -204,7 +204,7 @@ function drawBricks() {
 function drawAll() {
   colourRect(0, 0, canvas.width, canvas.height, '#000')
   colourCircle(ballX, ballY, 10, '#ffd700')
-  colourRect(paddleX, canvas.height - PADDLE_DISTANCE_FROM_EDGE, PADDLE_WIDTH, PADDLE_THICKNESS, '#fffcfa')
+  // colourRect(paddleX, canvas.height - PADDLE_DISTANCE_FROM_EDGE, PADDLE_WIDTH, PADDLE_THICKNESS, '#fffcfa')
   drawBricks()
 }
 
