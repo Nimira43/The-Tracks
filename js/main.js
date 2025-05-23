@@ -45,7 +45,6 @@ window.onload = function () {
   setInterval(updateAll, 1000 / fps)
 
   canvas.addEventListener('mousemove', updateMousePos)    
-  trackReset() 
   ballReset()
 }
 
@@ -80,7 +79,7 @@ function isTrackAtColRow(col, row) {
     row < TRACK_ROWS
   ) {
     let trackIndexUnderCoord = rowColToArrayIndex(col, row)
-    return trackGrid[trackIndexUnderCoord]
+    return (trackGrid[trackIndexUnderCoord] == 1)
   } else {
     return false
   }
@@ -98,8 +97,6 @@ function ballTrackHandling() {
     ballTrackRow < TRACK_ROWS
   ) {
     if (isTrackAtColRow(ballTrackCol, ballTrackRow)) {
-      trackGrid[trackIndexUnderBall] = false
-      tracksLeft--
     
       let prevBallX = ballX - ballSpeedX
       let prevBallY = ballY - ballSpeedY
@@ -141,7 +138,7 @@ function drawTracks() {
   for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
     for (let eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
       let arrayIndex = rowColToArrayIndex(eachCol, eachRow)
-      if (trackGrid[arrayIndex]) {
+      if (trackGrid[arrayIndex] == 1) {
         colourRect(
           TRACK_WIDTH * eachCol,
           TRACK_HEIGHT * eachRow,
