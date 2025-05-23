@@ -138,7 +138,7 @@ function drawTracks() {
           TRACK_HEIGHT * eachRow,
           TRACK_WIDTH - TRACK_GAP,
           TRACK_HEIGHT - TRACK_GAP,
-          '#ff0000'
+          '#8b0000'
         )
       }
     }
