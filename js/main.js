@@ -23,18 +23,9 @@ function updateMousePos(event) {
 }
 
 function trackReset() {
-  tracksLeft = 0
-
-  for (let row = 0; row < TRACK_ROWS; row++) {
-    for (let col = 0; col < TRACK_COLS; col++) {
-      let trackIndex = row * TRACK_COLS + col
-      if (row < 3) {
-        trackGrid[trackIndex] = false
-      } else {
-        trackGrid[trackIndex] = true
-        tracksLeft++
-      }
-    }
+  for (let i = 0; i < TRACK_COLS * TRACK_ROWS; i++) {
+    trackGrid[i] = true
+    tracksLeft++
   }
 }
 
