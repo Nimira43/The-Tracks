@@ -2,10 +2,11 @@ import { trackGrid } from './tracks/tracks.js'
 
 let carImage = document.createElement('img')
 let carImageLoaded = false
-let ballX = 75
-let ballY = 75
-let ballSpeedX = 5
-let ballSpeedY = 7
+
+let carX = 75
+let carY = 75
+let carAng = 0
+let carSpeed = 2
 
 const TRACK_WIDTH = 40
 const TRACK_HEIGHT = 40
