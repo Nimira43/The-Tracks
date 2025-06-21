@@ -125,12 +125,13 @@ function drawTracks() {
 
 function drawAll() {
   colourRect(0, 0, canvas.width, canvas.height, '#000')
-  // colourCircle(ballX, ballY, 10, '#ffd700')
+
   if (carImageLoaded) {
-    ctx.drawImage(
-      carImage, 
-      ballX - carImage.width / 2,
-      ballY - carImage.height / 2
+    drawBitmapCentredWithRotation(
+      carImage,
+      carX,
+      carY,
+      carAng
     )
   }
   drawTracks()
