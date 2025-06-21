@@ -136,6 +136,10 @@ function drawAll() {
   drawTracks()
 }
 
+function drawBitmapCentredWithRotation() {}
+
+
+
 function colourRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColour) {
   ctx.fillStyle = fillColour
   ctx.fillRect(topLeftX, topLeftY, boxWidth, boxHeight)
