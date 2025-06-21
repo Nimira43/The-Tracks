@@ -83,7 +83,7 @@ function isTrackAtColRow(col, row) {
 function carTrackHandling() {
   let carTrackCol = Math.floor(carX / TRACK_WIDTH)
   let carTrackRow = Math.floor(carY / TRACK_HEIGHT)
-  let trackIndexUnderBall = rowColToArrayIndex(carTrackCol, carTrackRow) 
+  let trackIndexUnderCar = rowColToArrayIndex(carTrackCol, carTrackRow) 
   
   if (
     carTrackCol >= 0 &&
@@ -92,30 +92,7 @@ function carTrackHandling() {
     carTrackRow < TRACK_ROWS
   ) {
     if (isTrackAtColRow(carTrackCol, carTrackRow)) {
-    
-      let prevBallX = carX - carSpeedX
-      let prevBallY = carY - carSpeedY
-      let prevTrackCol = Math.floor(prevBallX / TRACK_WIDTH)
-      let prevTrackRow = Math.floor(prevBallY / TRACK_HEIGHT)
-
-      let bothTestsFailed = true
-
-      if (prevTrackCol != carTrackCol) {
-        if (isTrackAtColRow(prevTrackCol, carTrackRow) == false) {
-          ballSpeedX *= -1
-          bothTestsFailed = false
-        }
-      }
-      if (prevTrackRow != ballTrackRow) {
-        if (isTrackAtColRow(prevTrackCol, ballTrackRow) == false) {
-          ballSpeedY *= -1
-          bothTestsFailed = false
-        }
-      }
-      if (bothTestsFailed) {
-        ballSpeedX *= -1
-        ballSpeedY *= -1
-      }
+      carSpeed *= -1
     }
   }
 }
