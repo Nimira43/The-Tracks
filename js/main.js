@@ -2,7 +2,6 @@ import { trackGrid } from './tracks/tracks.js'
 
 let carImage = document.createElement('img')
 let carImageLoaded = false
-
 let carX = 75
 let carY = 75
 let carAng = 0
@@ -32,13 +31,13 @@ window.onload = function () {
   setInterval(updateAll, 1000 / fps)
 
   canvas.addEventListener('mousemove', updateMousePos)    
-  ballReset()
 
   carImage.onload = () => carImageLoaded = true
-  carImage.src = '../images/car/car.png'
+  
   // carImage.onload = function() {
   //   carImageLoaded = true
   // }
+  carImage.src = '../images/car/car.png'
   carReset()
 }
 
@@ -61,8 +60,8 @@ function carReset() {
 }
 
 function carMove() {
-  carX += Math.cos(carAng) * carSpeedX
-  carY += Math.sin(carAng) * carSpeedY
+  carX += Math.cos(carAng) * carSpeed
+  carY += Math.sin(carAng) * carSpeed
   carAng += 0.02
 }
 
@@ -150,8 +149,6 @@ function drawBitmapCentredWithRotation(
   )
   ctx.restore()
 }
-
-
 
 function colourRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColour) {
   ctx.fillStyle = fillColour
