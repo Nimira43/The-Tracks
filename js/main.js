@@ -41,12 +41,12 @@ function keyPressed(event) {
   if (event.keyCode == KEY_DOWN) backward = true
   event.preventDefault()
 }
+
 function keyReleased(event) {
   if (event.keyCode == KEY_LEFT) turnLeft = false
   if (event.keyCode == KEY_RIGHT) turnRight = false
   if (event.keyCode == KEY_UP) forward = false
   if (event.keyCode == KEY_DOWN) backward = false
-  event.preventDefault()
 }
 
 window.onload = function () {
@@ -56,7 +56,8 @@ window.onload = function () {
   setInterval(updateAll, 1000 / fps)
 
   canvas.addEventListener('mousemove', updateMousePos)    
-
+  document.addEventListener('keydown', keyPressed)
+  document.addEventListener('keyup', keyReleased)
   carImage.onload = () => carImageLoaded = true
   
   // carImage.onload = function() {
