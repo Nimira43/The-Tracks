@@ -60,17 +60,10 @@ function carReset() {
   } 
 }
 
-function ballMove() {
-  ballX += ballSpeedX
-  ballY += ballSpeedY
-
-  if (ballX < 0 && ballSpeedX < 0.0) ballSpeedX *= -1
-  if (ballX > canvas.width && ballSpeedX > 0.0) ballSpeedX *= -1
-  if (ballY < 0 && ballSpeedY < 0.0) ballSpeedY *= -1
-  if (ballY > canvas.height) {
-    ballReset()
-    trackReset()
-  }
+function carMove() {
+  carX += Math.cos(carAng) * carSpeedX
+  carY += Math.sin(carAng) * carSpeedY
+  carAng += 0.02
 }
 
 function isTrackAtColRow(col, row) {
