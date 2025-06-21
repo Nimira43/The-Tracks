@@ -136,7 +136,19 @@ function drawAll() {
   drawTracks()
 }
 
-function drawBitmapCentredWithRotation() {}
+function drawBitmapCentredWithRotation(
+  useBitmap, atX, atY, withAng
+) {
+  ctx.save()
+  ctx.translate(atX, atY)
+  ctx.rotate(withAng)
+  ctx.drawImage(
+    useBitmap,
+    -useBitmap.width / 2,
+    -useBitmap.height / 2
+  )
+  ctx.restore()
+}
 
 
 
