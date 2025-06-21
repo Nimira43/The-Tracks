@@ -1,5 +1,4 @@
-import { piquet, senna, prost, mansell } from './tracks/tracks.js'
-console.log(piquet, senna, prost, mansell)
+import { trackGrid } from './tracks/tracks.js'
 
 let ballX = 75
 let ballY = 75
@@ -41,7 +40,10 @@ function updateAll() {
 function ballReset() {
   for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
     for (var eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
-      
+      let arrayIndex = rowColToArrayIndex(eachCol, eachRow)
+      if (trackGrid[arrayIndex] == 2) {
+
+      }
     }
   } 
 }
@@ -67,10 +69,7 @@ function isTrackAtColRow(col, row) {
     row < TRACK_ROWS
   ) {
     let trackIndexUnderCoord = rowColToArrayIndex(col, row)
-    // return (piquet[trackIndexUnderCoord] == 1)
-    // return (senna[trackIndexUnderCoord] == 1)
-    // return (prost[trackIndexUnderCoord] == 1)
-    return (mansell[trackIndexUnderCoord] == 1)
+    return (trackGrid[trackIndexUnderCoord] == 1)
   } else {
     return false
   }
@@ -129,10 +128,7 @@ function drawTracks() {
   for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
     for (let eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
       let arrayIndex = rowColToArrayIndex(eachCol, eachRow)
-      // if (piquet[arrayIndex] == 1) {
-      // if (senna[arrayIndex] == 1) {
-      // if (prost[arrayIndex] == 1) {
-      if (mansell[arrayIndex] == 1) {
+      if (trackGrid[arrayIndex] == 1) {
         colourRect(
           TRACK_WIDTH * eachCol,
           TRACK_HEIGHT * eachRow,
