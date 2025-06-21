@@ -32,6 +32,12 @@ window.onload = function () {
 
   canvas.addEventListener('mousemove', updateMousePos)    
   ballReset()
+
+  carImage.onload = () => carImageLoaded = true
+
+  // carImage.onload = function() {
+  //   carImageLoaded = true
+  // }
 }
 
 function updateAll() {
