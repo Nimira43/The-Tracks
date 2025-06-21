@@ -42,7 +42,9 @@ function ballReset() {
     for (var eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
       let arrayIndex = rowColToArrayIndex(eachCol, eachRow)
       if (trackGrid[arrayIndex] == 2) {
-
+        trackGrid[arrayIndex] = 0
+        ballX = eachCol = TRACK_WIDTH + TRACK_WIDTH / 2
+        ballY = eachRow = TRACK_HEIGHT + TRACK_HEIGHT / 2
       }
     }
   } 
