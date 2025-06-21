@@ -86,9 +86,12 @@ function carReset() {
 }
 
 function carMove() {
+  if (forward) carSpeed += 0.02
+  if (backward) carSpeed -= 0.02
+  if (turnLeft) carAng -= 0.04
+  if (turnRight) carAng += 0.04
   carX += Math.cos(carAng) * carSpeed
   carY += Math.sin(carAng) * carSpeed
-  carAng += 0.02
 }
 
 function isTrackAtColRow(col, row) {
