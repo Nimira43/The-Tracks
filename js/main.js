@@ -98,8 +98,8 @@ function carTrackHandling() {
 }
   
 function moveAll() {
-  ballMove()
-  ballTrackHandling()
+  carMove()
+  carTrackHandling()
 }
   
 function rowColToArrayIndex(col, row) {
