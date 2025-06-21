@@ -34,7 +34,20 @@ function updateMousePos(event) {
   mouseY = event.clientY - rect.top - root.scrollTop
 }
 
-function keyPressed(event) {}
+function keyPressed(event) {
+  if (event.keyCode == KEY_LEFT) turnLeft = true
+  if (event.keyCode == KEY_RIGHT) turnRight = true
+  if (event.keyCode == KEY_UP) forward = true
+  if (event.keyCode == KEY_DOWN) backward = true
+  event.preventDefault()
+}
+function keyReleased(event) {
+  if (event.keyCode == KEY_LEFT) turnLeft = false
+  if (event.keyCode == KEY_RIGHT) turnRight = false
+  if (event.keyCode == KEY_UP) forward = false
+  if (event.keyCode == KEY_DOWN) backward = false
+  event.preventDefault()
+}
 
 window.onload = function () {
   canvas = document.getElementById('gameCanvas')
