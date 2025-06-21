@@ -5,7 +5,7 @@ let carImageLoaded = false
 let carX = 75
 let carY = 75
 let carAng = 0
-let carSpeed = 2
+let carSpeed = 0
 
 const TRACK_WIDTH = 40
 const TRACK_HEIGHT = 40
@@ -16,6 +16,16 @@ const TRACK_ROWS = 15
 let canvas, ctx
 let mouseX = 0
 let mouseY = 0
+
+const KEY_LEFT = 37
+const KEY_RIGHT = 39
+const KEY_UP = 38
+const KEY_DOWN = 40
+
+let forward = false
+let backward = false
+let turnLeft = false
+let turnRight = false
 
 function updateMousePos(event) {
   let rect = canvas.getBoundingClientRect()
