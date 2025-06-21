@@ -34,10 +34,11 @@ window.onload = function () {
   ballReset()
 
   carImage.onload = () => carImageLoaded = true
-
+  carImage.src = '../images/car/car.png'
   // carImage.onload = function() {
   //   carImageLoaded = true
   // }
+  ballReset()
 }
 
 function updateAll() {
@@ -153,7 +154,14 @@ function drawTracks() {
 
 function drawAll() {
   colourRect(0, 0, canvas.width, canvas.height, '#000')
-  colourCircle(ballX, ballY, 10, '#ffd700')
+  // colourCircle(ballX, ballY, 10, '#ffd700')
+  if (carImageLoaded) {
+    ctx.drawImage(
+      carImage, 
+      ballX - carImage.width / 2,
+      ballY - carImage.height / 2
+    )
+  }
   drawTracks()
 }
 
