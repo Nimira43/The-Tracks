@@ -34,6 +34,8 @@ function updateMousePos(event) {
   mouseY = event.clientY - rect.top - root.scrollTop
 }
 
+function keyPressed(event) {}
+
 window.onload = function () {
   canvas = document.getElementById('gameCanvas')
   ctx = canvas.getContext('2d')
