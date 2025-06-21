@@ -39,7 +39,7 @@ window.onload = function () {
   // carImage.onload = function() {
   //   carImageLoaded = true
   // }
-  ballReset()
+  carReset()
 }
 
 function updateAll() {
@@ -47,14 +47,14 @@ function updateAll() {
   drawAll()
 }
 
-function ballReset() {
+function carReset() {
   for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
     for (var eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
       let arrayIndex = rowColToArrayIndex(eachCol, eachRow)
       if (trackGrid[arrayIndex] == 2) {
         trackGrid[arrayIndex] = 0
-        ballX = eachCol = TRACK_WIDTH + TRACK_WIDTH / 2
-        ballY = eachRow = TRACK_HEIGHT + TRACK_HEIGHT / 2
+        carX = eachCol = TRACK_WIDTH + TRACK_WIDTH / 2
+        carY = eachRow = TRACK_HEIGHT + TRACK_HEIGHT / 2
       }
     }
   } 
