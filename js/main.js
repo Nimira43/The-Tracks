@@ -39,8 +39,11 @@ function updateAll() {
 }
 
 function ballReset() {
-  ballX = canvas.width / 2
-  ballY = canvas.height / 2
+  for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
+    for (var eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
+      
+    }
+  } 
 }
 
 function ballMove() {
