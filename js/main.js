@@ -153,7 +153,6 @@ function drawTracks() {
 
 function drawAll() {
   colourRect(0, 0, canvas.width, canvas.height, '#000')
-
   if (carImageLoaded) {
     drawBitmapCentredWithRotation(
       carImage,
